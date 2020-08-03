@@ -21,3 +21,17 @@ class Solution {
         return -1;
     }
 }
+389. 找不同
+     给定两个字符串 s 和 t，它们只包含小写字母。字符串 t 由字符串 s 随机重排，然后在随机位置添加一个字母。请找出在 t 中被添加的字母。
+题解：
+class Solution {
+    public char findTheDifference(String s, String t) {
+        char ans = 0;
+        for(int i = 0;i < s.length();i++)
+            ans ^= s.charAt(i);
+        for(int i = 0;i < t.length();i++)
+            ans ^= t.charAt(i);
+        return ans;
+    }
+}
+知识点：此题利用了异或运算，相同字符异或操作后为0,0^x(任何数)=x,不管两个相同的数以什么顺序异或最终结果都为0，所以s和t中相同的字符都存在两个，将它们全都异或之后为0，最后多出来一个即为结果。
